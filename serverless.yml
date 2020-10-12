@@ -1,0 +1,14 @@
+service: cors
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: bypass
+  region: us-east-1
+
+functions:
+  server:
+    handler: index.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
